@@ -1,0 +1,28 @@
+<div class="row" style="max-width: 488px;">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center notification-container">
+        
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center">
+                <p *ngIf="!retry" class="notification-msj">REVISÁ TU CORREO <br> ELECTRÓNICO. ENVIAMOS UN LINK <br> PARA {{subject}}. <br> REVISÁ TU BANDEJA DE SPAM.</p>
+                
+                <p *ngIf="retry" class="notification-msj">REVISÁ TU CORREO <br> ELECTRÓNICO. ENVIAMOS UN NUEVO LINK <br> PARA {{subject}}. <br> REVISÁ TU BANDEJA DE SPAM.</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center">
+                <a (click)="onClick()" class="notification-event">NO RECIBÍ NINGUN CORREO ELECTRÓNICO </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center">
+
+        <a (click)="goToWelcome()" class="notification-index">VOLVER A INICIO</a>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.content-paginator {
+    position: relative;
+}
+
+.paginator {
+    margin-top: 16px;
+    background: var(--tertiary);
+}
+
+.paginator-selected {
+    background-color: var(--hovertabla-color);
+}
+
+.total-elements {
+    line-height: 50px;
+    height: 50px;
+    padding: 0 32px;
+    font-size: 16px;
+    font-weight: 800;
+    white-space: nowrap;
+    position: absolute;
+    top: 2px;
+    color: #00000094;
+}

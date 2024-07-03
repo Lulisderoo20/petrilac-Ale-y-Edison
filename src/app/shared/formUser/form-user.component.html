@@ -1,0 +1,927 @@
+<div class="container-fluid">
+
+  <div class="loading" *ngIf="showLoading" >
+
+
+    <div *ngIf="!showLoadingSuccessMessage">
+      <img class="loading-image" id="loading8" src="/assets/image/loading-08.png" />
+      <img class="loading-image" id="loading7" src="/assets/image/loading-07.png" />
+      <img class="loading-image" id="loading6" src="/assets/image/loading-06.png" />
+      <img class="loading-image" id="loading5" src="/assets/image/loading-05.png" />
+      <img class="loading-image" id="loading4" src="/assets/image/loading-04.png" />
+      <img class="loading-image" id="loading3" src="/assets/image/loading-03.png" />
+      <img class="loading-image" id="loading2" src="/assets/image/loading-02.png" />
+      <img class="loading-image" id="loading1" src="/assets/image/loading-01.png" />
+    </div>
+
+
+    <div class="row loading-success-message" *ngIf="showLoadingSuccessMessage" (click)="goToWelcome()">
+      <div *ngIf="sellerLoggedIn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center"><img src="/assets/image/coupon-logo.png" class="form-logo-img"/></div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center loading-success-message-text">CUPONES CARGADOS</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center loading-success-message-text">CORRECTAMENTE</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center loading-success-message-text-thx" style="text-transform: uppercase; margin-top: 72px;">¡GRACIAS POR PARTICIPAR, {{sellerLoggedUser}}!</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12d-flex align-items-center justify-content-center " style="font-size: 24px; margin-top: 156px;">VOLVER A INICIO</div>
+        </div>
+      </div>
+      <div *ngIf="!sellerLoggedIn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center"><img src="/assets/image/data-logo.png" class="form-logo-img"/></div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center loading-success-message-text">DATOS CARGADOS</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center loading-success-message-text">CORRECTAMENTE</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center loading-success-message-text-thx" style="text-transform: uppercase; margin-top: 72px;">¡GRACIAS POR PARTICIPAR, {{sellerLoggedUser}}!</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12d-flex align-items-center justify-content-center " style="font-size: 24px; margin-top: 156px;">VOLVER A INICIO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row welcome-container">
+
+    <!-- div izquierda -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center" *ngIf="register">
+
+      <!-- unico hijo de dev izquierda -->
+      <div class="row row-container" >
+
+        <!-- unico nieto de dev izquierda -->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center align-items-start">
+
+          <!-- imagen de nieto de dev izquierda -->
+          <img src="/assets/image/registration.png" class="image-register"/>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- div derecha FORM-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center" style="align-items: center;">
+
+      <!-- 1er hijo div derecha -->
+      <div *ngIf="showEmailNotification">
+
+        <!-- 1er nieto div derecha -->
+        <app-notification-window>
+
+        </app-notification-window>
+
+      </div>
+
+      <!-- 2do hijo div derecha FORM-->
+      <div *ngIf="!showLoading && !showEmailNotification" class="form-container">
+
+        <!-- 2do nieto div derecha FORM-->
+        <div class="row" style="flex: 1">
+
+          <!-- unico bisnieto div derecha FORM-->
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color: #fff; border-radius: 0 0 10px 10px; padding: 28px 15px 0 15px;">
+
+            <!-- 1er hijo bisnieto div derecha -->
+            <div *ngIf="sellerLoggedIn && !showEmailNotification">
+
+              <!-- div 1er hijo de bisnieto div derecha -->
+              <div class="row" style="margin-bottom: 24px;">
+
+                <!-- div de div 1er hijo de bisnieto div derecha -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                  <span class="form-user-logged" style="text-transform: uppercase;">
+                    ¡BIENVENIDO, {{sellerLoggedUser}}!
+                  </span>
+
+                  <!-- 1er boton de div de div de 1er hijo de bisnieto div derecha -->
+                  <button id="logout" mat-menu-item (click)="logout()" class="form-user-logged-button">
+                    
+                    <mat-icon class="align-vertical-form" matTooltip="{{'CERRAR SESIÓN'}}">
+                      exit_to_app
+                    </mat-icon>
+                  </button>
+
+                  <!-- 2do boton de div de div de 1er hijo de bisnieto div derecha -->
+                  <button *ngIf="storedUser.role == 'admin'" id="admin" mat-menu-item (click)="goToAdmin()" class="form-user-logged-button">
+                    <mat-icon class="align-vertical-form" matTooltip="{{'ADMINISTRADOR'}}">settings
+
+                    </mat-icon>
+                  </button>
+
+                  <!-- 3er boton de div de div de 1er hijo de bisnieto div derecha -->
+                  <button *ngIf="!showDataUser" id="viewData" mat-menu-item (click)="showDataUser = true;" class="form-user-logged-button">
+                    <mat-icon class="align-vertical-form" matTooltip="{{'VER DATOS'}}">edit
+
+                    </mat-icon>
+                  </button>
+
+                  <!-- 4to boton de div de div de 1er hijo de bisnieto div derecha -->
+                  <button *ngIf="showDataUser" id="viewData" mat-menu-item (click)="showDataUser = false;" class="form-user-logged-button">
+                    <mat-icon class="align-vertical-form" matTooltip="{{'VOLVER'}}">arrow_back
+
+                  </mat-icon>
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- 2do hijo bisnieto div derecha -->
+            <div *ngIf="!sellerLoggedIn && signup && !showRecoveryPassword">
+
+              <form
+                
+                [formGroup]="sellerLoginForm"
+                novalidate
+                (ngSubmit)="onSubmitSellerLoginForm(sellerLoginForm.value)"
+              >
+                <!-- 1er hijo de FORM -->
+                <div class="row">
+
+                  <!-- 1er nieto de FORM -->
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <p>CORREO ELECTRÓNICO</p>
+
+                    <mat-form-field class="full-width" >
+                      <input
+                        matInput
+                        type="text"
+                        placeholder="Ej: juanperez123@hotmail.com"
+                        formControlName="email"
+                        required
+                      />
+                      <mat-error
+                        *ngFor="let validation of account_validation_messages.email"
+                      >
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            sellerLoginForm.get('email').hasError(validation.type) &&
+                            (sellerLoginForm.get('email').dirty ||
+                            sellerLoginForm.get('email').touched)
+                          "
+                          >{{ validation.message }}
+                          </mat-error
+                        >
+                      </mat-error>
+
+                    </mat-form-field>
+                  
+                  </div>
+
+
+                </div>
+
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" rel="stylesheet"/>
+
+                <!-- 2do hijo FORM -->
+                <div class="row">
+
+                  <!-- 2do nieto de FORM div -->
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <p>CONTRASEÑA</p>
+
+                    <mat-form-field class="full-width" >
+                      <input
+                        matInput
+                        type="password"
+                        placeholder="Contraseña"
+                        formControlName="password"
+                        required
+                      />
+                      <mat-error
+                        *ngFor="let validation of account_validation_messages.password"
+                      >
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            sellerLoginForm.get('password').hasError(validation.type)
+                          "
+                          >{{ validation.message }}</mat-error
+                        >
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+
+                </div>
+
+                <!-- 3er hijo FORM -->
+                <div style="margin-top: 76%;">
+
+                  <!-- 3er nieto FORM -->
+                  <div class="row">
+
+                    <!-- div 3er nieto FORM -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:#ed7c31;">
+                      ¿No tenés una cuenta? 
+
+                      <a (click)="goToRegister()" class="form-session-link">REGISTRATE POR ÚNICA VEZ
+
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                  <!-- 4to nieto FORM -->
+                  <div class="row">
+
+                    <!-- div 4to nieto FORM -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:#ed7c31; margin-top: 16px;">
+                      
+                       ¿Olvidaste tu contraseña? 
+                       <a (click)="showSellerRecoveryPassword()" class="form-session-link">RECUPERAR CONTRASEÑA
+
+                       </a>
+
+                    </div>
+
+                  </div>
+
+                  <button
+                    class="submit-btn"
+                    color="primary"
+                    mat-raised-button
+                    type="submit"
+                    [disabled]="sellerLoginForm.invalid"
+                  >
+                    INICIAR SESIÓN
+                  </button>
+
+                </div>
+
+              </form>
+
+
+            </div>
+
+            <!-- 3er hijo bisnieto div derecha FORM -->
+            <div *ngIf="!sellerLoggedIn && register">
+
+
+
+              <!-- UNICO HIJO DE 3er hijo de bisnieto div derecha FORM -->
+              <div class="row">
+
+                <!-- UNICO NIETO DE 3er hijo de bisnieto div derecha FORM -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                      <!-- 1er form de UNICO NIETO DE 3er hijo de bisnieto div derecha FORM  -->
+                      <form
+                      [formGroup]="sellerRegisterForm"
+                      novalidate
+                      (ngSubmit)="onSubmitSellerRegisterForm(sellerRegisterForm.value)"
+                      >
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>NOMBRE</p>
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                maxlength="25"
+                                placeholder="Ej: Juan"
+                                formControlName="name"
+                                required
+                              />
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.name"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm.get('name').hasError(validation.type) &&
+                                    (sellerRegisterForm.get('name').dirty ||
+                                    sellerRegisterForm.get('name').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>APELLIDO</p>
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                maxlength="25"
+                                placeholder="Ej: Perez"
+                                formControlName="lastName"
+                                required
+                                apparence
+                              />
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.lastName"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm
+                                      .get('lastName')
+                                      .hasError(validation.type) &&
+                                    (sellerRegisterForm.get('lastName').dirty ||
+                                    sellerRegisterForm.get('lastName').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <p>DOCUMENTO</p>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <mat-form-field >
+                              <mat-select
+                                placeholder="TIPO"
+                                floatPlaceholder="never"
+                                formControlName="documentType"
+                              >
+                                <mat-option
+                                  *ngFor="let item of documentTypes"
+                                  [value]="item.type"
+                                >
+                                  {{ item.name }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error
+                                  *ngFor="let validation of account_validation_messages.documentType"
+                                >
+                                <mat-error
+                                    class="error-message"
+                                    *ngIf="
+                                      sellerRegisterForm.get('documentType').hasError(validation.type) &&
+                                      (sellerRegisterForm.get('documentType').dirty ||
+                                      sellerRegisterForm.get('documentType').touched)
+                                    "
+                                    >{{ validation.message }}</mat-error
+                                  >
+                                </mat-error>
+                            </mat-form-field>
+                          </div>
+
+                          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 padding-left-field" >
+                            <mat-form-field >
+                              <input matInput maxlength="10" placeholder="Ej: 40667889" formControlName="documentNumber" required />
+                              <mat-error
+                                  *ngFor="let validation of account_validation_messages.documentNumber"
+                                >
+                                <mat-error
+                                    class="error-message"
+                                    *ngIf="
+                                      sellerRegisterForm.get('documentNumber').hasError(validation.type) &&
+                                      (sellerRegisterForm.get('documentNumber').dirty ||
+                                      sellerRegisterForm.get('documentNumber').touched)
+                                    "
+                                    >{{ validation.message }}</mat-error
+                                  >
+                                </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>NÚMERO DE ÁREA</p>
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                type="text"
+                                placeholder="Ej: 011"
+                                formControlName="areaNumber"
+                                required
+                              />
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.areaNumber"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm.get('areaNumber').hasError(validation.type) &&
+                                    (sellerRegisterForm.get('areaNumber').dirty ||
+                                    sellerRegisterForm.get('areaNumber').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 padding-left-field" >
+                            <p>NÚMERO DE CELULAR</p>
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                type="text"
+                                placeholder="Ej: 48596335"
+                                formControlName="phoneNumber"
+                                required
+                              />
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.phoneNumber"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm.get('phoneNumber').hasError(validation.type) &&
+                                    (sellerRegisterForm.get('phoneNumber').dirty ||
+                                    sellerRegisterForm.get('phoneNumber').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div style="margin-top: 35%;">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+                                 style="color:#003b71;">
+                              ¿Ya tenés una cuenta? <a (click)="showSellerLogin()" class="form-session-link">
+                                INICIÁ SESIÓN</a>
+                            </div>
+                          </div>
+                        </div>
+
+                      </form>
+
+                      <!-- 2do form de UNICO NIETO DE 3er hijo de bisnieto div derecha   -->
+                      <form
+                      [formGroup]="sellerRegisterForm"
+                      novalidate
+                      (ngSubmit)="onSubmitSellerRegisterForm(sellerRegisterForm.value)"
+                      >
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>CÓDIGO POSTAL DE LA SUCURSAL</p>
+                            <mat-form-field class="full-width" >
+                              <input matInput [matAutocomplete]="auto" id="autocompleteZipCode" maxlength="4" placeholder="Ej: 1424" (keyup)="onInputZipCodeChange()" >
+
+                              <mat-autocomplete #auto="matAutocomplete" (optionSelected)='selectedZipCode($event.option.value)' [displayWith]="displayFnZipCode.bind(this)">
+                                <mat-option *ngFor="let item of zipCodeOptions" [value]="item.id">
+                                  {{item.code}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            <!--
+                              <input
+                                matInput
+                                maxlength="4"
+                                placeholder="Ej: 1424"
+                                formControlName="postalCode"
+                                required
+                              /> -->
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.postalCode"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm.get('postalCode').hasError(validation.type) &&
+                                    (sellerRegisterForm.get('postalCode').dirty ||
+                                    sellerRegisterForm.get('postalCode').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>PRONVICIA</p>
+                            <mat-form-field >
+                              <mat-select
+                                placeholder=""
+                                floatPlaceholder="never"
+                                formControlName="province"
+                                (selectionChange)="onSelectChangeProvinces($event.value)"
+                              >
+                                <mat-option
+                                  *ngFor="let item of provinces"
+                                  [value]="item.id"
+                                >
+                                  {{ item.name }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.province"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm.get('province').hasError(validation.type) &&
+                                    (sellerRegisterForm.get('province').dirty ||
+                                    sellerRegisterForm.get('province').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+
+                          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 padding-left-field" >
+                            <p>LOCALIDAD</p>
+                            <mat-form-field >
+                              <mat-select
+                                placeholder=""
+                                floatPlaceholder="never"
+                                formControlName="city"
+                                (selectionChange)="onSelectChangeCities($event.value)"
+                              >
+                                <mat-option
+                                  *ngFor="let item of cities"
+                                  [value]="item.id"
+                                >
+                                  {{ item.name }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error
+                              *ngFor="let validation of account_validation_messages.city"
+                              >
+                              <mat-error
+                                class="error-message"
+                                *ngIf="
+                                  sellerRegisterForm.get('city').hasError(validation.type) &&
+                                  (sellerRegisterForm.get('city').dirty ||
+                                  sellerRegisterForm.get('city').touched)
+                                "
+                                >{{ validation.message }}</mat-error
+                              >
+                            </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>NOMBRE DEL COMERCIO / RAZÓN SOCIAL</p>
+                            <mat-form-field >
+                              <input matInput [matAutocomplete]="autoBN" id="autocompleteBusinessName" (keyup)="onInputBusinessNameChange()" >
+
+                              <mat-autocomplete #autoBN="matAutocomplete" (optionSelected)='selectedBusinessName($event.option.value)' [displayWith]="displayFnBusinessName.bind(this)">
+                                <mat-option *ngFor="let item of businessNamesOptions" [value]="item.id">
+                                  {{item.name}}
+                                </mat-option>
+                              </mat-autocomplete>
+                              <!-- <mat-select
+                                placeholder="NOMBRE DEL COMERCIO"
+                                floatPlaceholder="never"
+                                formControlName="businessName"
+                                (selectionChange)="onSelectChangeBusinessNames($event.value)"
+                              >
+                                <mat-option
+                                  *ngFor="let item of businessNames"
+                                  [value]="item.id"
+                                >
+                                  {{ item.name }}
+                                </mat-option>
+                              </mat-select> -->
+                              <mat-error
+                              *ngFor="let validation of account_validation_messages.businessName"
+                              >
+                              <mat-error
+                                class="error-message"
+                                *ngIf="
+                                  sellerRegisterForm.get('businessName').hasError(validation.type) &&
+                                  (sellerRegisterForm.get('businessName').dirty ||
+                                  sellerRegisterForm.get('businessName').touched)
+                                "
+                                >{{ validation.message }}</mat-error
+                              >
+                            </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div *ngIf="sellerRegisterForm.value.businessName === 0" class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                placeholder=""
+                                formControlName="businessNameOther"
+                              />
+                              <mat-error
+                              *ngFor="let validation of account_validation_messages.businessNameOther"
+                              >
+                              <mat-error
+                                class="error-message"
+                                *ngIf="
+                                  sellerRegisterForm.get('businessNameOther').hasError(validation.type) &&
+                                  (sellerRegisterForm.get('businessNameOther').dirty ||
+                                  sellerRegisterForm.get('businessNameOther').touched)
+                                "
+                                >{{ validation.message }}</mat-error
+                              >
+                            </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>DIRECCIÓN DE LA SUCURSAL</p>
+                            <mat-form-field >
+                              <mat-select
+                                placeholder="DIRECCIÓN DE LA SUCURSAL"
+                                floatPlaceholder="never"
+                                formControlName="businessAddress"
+                                (selectionChange)="onSelectChangeBusinessAddresses($event.value)"
+                              >
+                                <mat-option
+                                  *ngFor="let item of businessAddresses"
+                                  [value]="item.id"
+                                >
+                                  {{ item.address }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error
+                              *ngFor="let validation of account_validation_messages.businessAddress"
+                              >
+                              <mat-error
+                                class="error-message"
+                                *ngIf="
+                                  sellerRegisterForm.get('businessAddress').hasError(validation.type) &&
+                                  (sellerRegisterForm.get('businessAddress').dirty ||
+                                  sellerRegisterForm.get('businessAddress').touched)
+                                "
+                                >{{ validation.message }}</mat-error
+                              >
+                            </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div *ngIf="sellerRegisterForm.value.businessAddress === 0" class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                placeholder=""
+                                formControlName="businessAddressOther"
+                              />
+                              <mat-error
+                              *ngFor="let validation of account_validation_messages.businessAddressOther"
+                              >
+                              <mat-error
+                                class="error-message"
+                                *ngIf="
+                                  sellerRegisterForm.get('businessAddressOther').hasError(validation.type) &&
+                                  (sellerRegisterForm.get('businessAddressOther').dirty ||
+                                  sellerRegisterForm.get('businessAddressOther').touched)
+                                "
+                                >{{ validation.message }}</mat-error
+                              >
+                            </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div style="margin-top: 35%;">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:#003b71;">
+                              ¿Ya tenés una cuenta? <a (click)="showSellerLogin()" class="form-session-link">INICIÁ SESIÓN</a>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </form>
+
+                      <!-- 3er form de UNICO NIETO DE 3er hijo de bisnieto div derecha   -->
+                      <form
+                      [formGroup]="sellerRegisterForm"
+                      novalidate
+                      (ngSubmit)="onSubmitSellerRegisterForm(sellerRegisterForm.value)"
+                      >
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>CORREO ELECTRÓNICO</p>
+                            <mat-form-field class="full-width" >
+                              <input
+                                matInput
+                                type="text"
+                                placeholder=""
+                                formControlName="email"
+                                required
+                              />
+                              <mat-error
+                                *ngFor="let validation of account_validation_messages.email"
+                              >
+                                <mat-error
+                                  class="error-message"
+                                  *ngIf="
+                                    sellerRegisterForm.get('email').hasError(validation.type) &&
+                                    (sellerRegisterForm.get('email').dirty ||
+                                    sellerRegisterForm.get('email').touched)
+                                  "
+                                  >{{ validation.message }}</mat-error
+                                >
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div formGroupName="matchingPasswords">
+
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-xs-12 col-sm-12">
+                              <p>CONTRASEÑA</p>
+                              <mat-form-field class="full-width" >
+                                <input
+                                  matInput
+                                  type="password"
+                                  placeholder=""
+                                  formControlName="password"
+                                  required
+                                />
+                                <mat-error
+                                  *ngFor="let validation of account_validation_messages.password"
+                                >
+                                  <mat-error
+                                    class="error-message"
+                                    *ngIf="
+                                      sellerRegisterForm
+                                        .get('matchingPasswords')
+                                        .get('password')
+                                        .hasError(validation.type) &&
+                                      (sellerRegisterForm.get('matchingPasswords').get('password')
+                                        .dirty ||
+                                        sellerRegisterForm.get('matchingPasswords').get('password')
+                                          .touched)
+                                    "
+                                    >{{ validation.message }}</mat-error
+                                  >
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-xs-12 col-sm-12">
+                              <p>REPETIR CONTRASEÑA</p>
+                              <mat-form-field class="full-width" >
+
+                                <input
+                                  matInput
+                                  type="password"
+                                  placeholder=""
+                                  formControlName="confirmPassword"
+                                  [errorStateMatcher]="parentErrorStateMatcher"
+                                  required
+                                />
+                                <mat-error
+                                  *ngFor="
+                                    let validation of account_validation_messages.confirmPassword
+                                  "
+                                >
+                                  <mat-error
+                                    class="error-message"
+                                    *ngIf="
+                                      (sellerRegisterForm
+                                        .get('matchingPasswords')
+                                        .get('confirmPassword')
+                                        .hasError(validation.type) ||
+                                        sellerRegisterForm
+                                          .get('matchingPasswords')
+                                          .hasError(validation.type)) &&
+                                      (sellerRegisterForm
+                                        .get('matchingPasswords')
+                                        .get('confirmPassword').dirty ||
+                                        sellerRegisterForm
+                                          .get('matchingPasswords')
+                                          .get('confirmPassword').touched)
+                                    "
+                                    >{{ validation.message }}</mat-error
+                                  >
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <mat-checkbox formControlName="acceptTerms" >
+                          ACEPTO LAS BASES Y CONDICIONES
+                        </mat-checkbox>
+
+                        <div style="margin-top: 44%;">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:#003b71;">
+                              ¿Ya tenés una cuenta? <a (click)="showSellerLogin()" class="form-session-link">INICIÁ SESIÓN</a>
+                            </div>
+                          </div>
+                          <button class="submit-btn" mat-button [disabled]="sellerRegisterForm.invalid || !sellerRegisterForm.value.acceptTerms" mat-raised-button color="primary">
+                            REGISTRARME
+                          </button>
+                        </div>
+
+                      </form>
+
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+            <!-- 4to hijo de bisnieto div derecha -->
+            <div *ngIf="!sellerLoggedIn && showRecoveryPassword">
+
+              <form
+              [formGroup]="sellerRecoveryPasswordForm"
+              novalidate
+              (ngSubmit)="onSubmitSellerRecoveryPasswordForm(sellerRecoveryPasswordForm.value)"
+              >
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>CORREO ELECTRÓNICO</p>
+                    <mat-form-field class="full-width" >
+                      <input
+                        matInput
+                        type="text"
+                        placeholder="Ej: juanperez123@hotmail.com"
+                        formControlName="email"
+                        required
+                      />
+                      <mat-error
+                        *ngFor="let validation of account_validation_messages.email"
+                      >
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            sellerRecoveryPasswordForm.get('email').hasError(validation.type) &&
+                            (sellerRecoveryPasswordForm.get('email').dirty ||
+                            sellerRecoveryPasswordForm.get('email').touched)
+                          "
+                          >{{ validation.message }}</mat-error
+                        >
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div style="margin-top: 98%;">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:#003b71;">
+                      ¿Ya tenés una cuenta? <a (click)="showSellerLogin()" class="form-session-link">INICIÁ SESIÓN</a>
+                    </div>
+                  </div>
+                  <button class="submit-btn" mat-button [disabled]="sellerRecoveryPasswordForm.invalid" mat-raised-button color="primary">
+                    RECUPERAR CONTRASEÑA
+                  </button>
+                </div>
+
+              </form>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="row footer-container">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center" style="align-items: end;">
+
+      <app-view-button *ngIf="!showLoading && !showEmailNotification" viewType="terms">
+
+      </app-view-button>
+
+    </div>
+
+  </div>
+
+</div>

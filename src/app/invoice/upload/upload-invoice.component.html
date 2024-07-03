@@ -1,0 +1,222 @@
+<div class="container-fluid">
+
+  <div class="loading" *ngIf="showLoading" >
+    <img class="loading-image" id="loading8" src="/assets/image/loading-08.png" />
+    <img class="loading-image" id="loading7" src="/assets/image/loading-07.png" />
+    <img class="loading-image" id="loading6" src="/assets/image/loading-06.png" />
+    <img class="loading-image" id="loading5" src="/assets/image/loading-05.png" />
+    <img class="loading-image" id="loading4" src="/assets/image/loading-04.png" />
+    <img class="loading-image" id="loading3" src="/assets/image/loading-03.png" />
+    <img class="loading-image" id="loading2" src="/assets/image/loading-02.png" />
+    <img class="loading-image" id="loading1" src="/assets/image/loading-01.png" />
+  </div>
+
+  <div class="account-user-container">
+
+    <div class="row account-container">
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-start">
+
+        <mat-icon class="account">account_circle</mat-icon>
+
+        <div class="row-container user-container">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 username-container">
+            Bienvenido, <b>Ariel!</b>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 score-container">
+            Tenes <b>108</b> puntos disponibles, carga tu factura para seguir sumando.
+          </div>
+        </div>        
+
+      </div>
+      
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end">
+    
+        <img src="/assets/image/logo.png" class="image-logo"/>
+      
+      </div>
+
+    </div>
+
+    <div class="content-action">
+
+      <div style="width: 100%; margin-bottom: 24px;">
+        <h2 class="content-title">Cargá tu factura indicando los productos vendidos</h2>
+      </div>
+    
+    </div>
+
+    <mat-card class="invoice-container">
+      <form 
+        [formGroup]="invoiceForm"
+        novalidate
+        (ngSubmit)="onSubmitInvoiceForm(invoiceForm.value)"
+      >
+        
+        <div class="row" style="margin-bottom: 24px;">
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <mat-form-field floatLabel="auto" style="width: 100%;" >
+              <mat-label>Tipo factura</mat-label> 
+              <input matInput type="text" formControlName="type" name="type" required />
+              <mat-error
+                  *ngFor="let validation of invoiceValidationMessages.type"
+                >
+                <mat-error
+                    class="error-message"
+                    *ngIf="
+                      invoiceForm.get('type').hasError(validation.type) &&
+                      (invoiceForm.get('type').dirty ||
+                      invoiceForm.get('type').touched)
+                    "
+                    >{{ validation.message }}</mat-error
+                  >
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <mat-form-field floatLabel="auto" style="width: 100%;" >
+              <mat-label>Número factura</mat-label> 
+              <input matInput type="text" formControlName="number" name="number" required />
+              <mat-error
+                  *ngFor="let validation of invoiceValidationMessages.number"
+                >
+                <mat-error
+                    class="error-message"
+                    *ngIf="
+                      invoiceForm.get('number').hasError(validation.type) &&
+                      (invoiceForm.get('number').dirty ||
+                      invoiceForm.get('number').touched)
+                    "
+                    >{{ validation.message }}</mat-error
+                  >
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <mat-grid-list cols="1" rowHeight="80px">
+                <mat-grid-tile
+                  [colspan]="1"
+                  [rowspan]="1"
+                  >{{uploadInvoicePoints | number: '1.2-2'}}
+                </mat-grid-tile>
+                <mat-label class="invoice-points">Puntos</mat-label> 
+            </mat-grid-list>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form [formGroup]="productsForm">
+              <div formArrayName="products" *ngFor="let item of products.controls; let i = index;">
+                <div [formGroupName]="i">
+                  <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                      <mat-form-field floatLabel="auto" style="width: 100%;" >
+                        <mat-label>CATEGORÍA *</mat-label> 
+                        <mat-select
+                          [id]="'productCategoryId-' + i"
+                          floatPlaceholder="never"
+                          formControlName="categoryId"
+                          (selectionChange)="onSelectChangeProductCategories(i, $event.value)"
+                        >
+                          <mat-option
+                            *ngFor="let item of productCategories"
+                            [value]="item.id"
+                          >
+                            {{ item.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                      <mat-form-field floatLabel="auto" style="width: 100%;" >
+                        <mat-label>PRODUCTO *</mat-label> 
+                        <mat-select
+                          [id]="'productId-' + i"
+                          floatPlaceholder="never"
+                          formControlName="productId"
+                          (selectionChange)="onSelectChangeProducts(i, $event.value)"
+                        >
+                          <mat-option
+                            *ngFor="let item of selectProducts.get(i)"
+                            [value]="item.id"
+                          >
+                            {{ item.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                      <mat-form-field floatLabel="auto" style="width: 100%;">
+                        <mat-label class="upload-invoice-count">Cantidad *</mat-label> 
+                        <button 
+                          mat-button 
+                          mat-icon-button 
+                          matPrefix 
+                          [disabled]="!checkingSelectedProduct(i)"
+                          (click)="incrementProductCount(i, -1)">
+                          <mat-icon>remove</mat-icon>
+                        </button>
+                        <input [id]="'productCount-' + i" type="number" min="1" matInput formControlName="count" 
+                            (ngModelChange)="onChangeProductCount(i, $event)" [readonly]="!checkingSelectedProduct(i)" />
+                        <button 
+                          mat-button 
+                          mat-icon-button 
+                          matSuffix
+                          [disabled]="!checkingSelectedProduct(i)"
+                          (click)="incrementProductCount(i, 1)">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end upload-invoice-btn-container">
+                <button
+                  class="d-flex justify-content-end add-product-btn"
+                  color="primary"
+                  mat-raised-button mat-icon-button
+                  (click)="addProductItem()"
+                >
+                  AGREGAR PRODUCTO<mat-icon class="add-product-icon">add</mat-icon>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center upload-invoice-btn-container">
+          <button
+            class="d-flex justify-content-center upload-invoice-btn"
+            color="primary"
+            mat-raised-button
+            type="submit"
+            [disabled]="invoiceForm.invalid || productsForm.invalid"
+          >
+            CARGAR FACTURA
+          </button>
+          
+        </div>
+
+      </form>
+    </mat-card>
+
+  </div>
+
+</div>
+
+<div class="footer-container">
+  
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style="align-items: center;">
+
+    <app-view-button viewType="terms"></app-view-button>
+
+  </div>
+  
+</div>

@@ -1,0 +1,11 @@
+export * from './account.service';
+import { AccountService } from './account.service';
+export * from './address.service';
+import { AddressService } from './address.service';
+export * from './admin.service';
+import { AdminService } from './admin.service';
+export * from './scheduledLottery.service';
+import { ScheduledLotteryService } from './scheduledLottery.service';
+export * from './users.service';
+import { UsersService } from './users.service';
+export const APIS = [AccountService, AddressService, AdminService, ScheduledLotteryService, UsersService];

@@ -1,0 +1,21 @@
+<div class="content-paginator">
+        
+        <mat-paginator class="paginator" [ngClass]="{ 'paginator-selected' : cardSelected }"
+                [length]="page.totalElements"
+                [pageSize]="page.size"
+                [pageSizeOptions]="pageSizeOptions"
+                [showFirstLastButtons]="true"
+                [hidePageSize]="hidePageSize || isPaginatorSmall"
+                (page)='setPageForSearch($event)'>
+        </mat-paginator>
+
+        <div class="total-elements">
+                <div *ngIf="!isPaginatorSmall">
+                        Total {{page.totalElements}} ítems
+                </div>
+                <div *ngIf="isPaginatorSmall">
+                        Total {{page.totalElements}} 
+                </div>
+        </div>
+
+</div>

@@ -1,0 +1,108 @@
+<div class="container-fluid">
+
+  <div class="loading" *ngIf="showLoading" >
+    <img class="loading-image" id="loading8" src="/assets/image/loading-08.png" />
+    <img class="loading-image" id="loading7" src="/assets/image/loading-07.png" />
+    <img class="loading-image" id="loading6" src="/assets/image/loading-06.png" />
+    <img class="loading-image" id="loading5" src="/assets/image/loading-05.png" />
+    <img class="loading-image" id="loading4" src="/assets/image/loading-04.png" />
+    <img class="loading-image" id="loading3" src="/assets/image/loading-03.png" />
+    <img class="loading-image" id="loading2" src="/assets/image/loading-02.png" />
+    <img class="loading-image" id="loading1" src="/assets/image/loading-01.png" />
+  </div>
+
+  <div class="account-user-container">
+
+    <div class="row account-container">
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-start">
+
+        <mat-icon class="account">account_circle</mat-icon>
+
+        <div class="row-container user-container">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 username-container">
+            Bienvenido, <b>Ariel!</b>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 score-container">
+            Tenes <b>108</b> puntos disponibles <span *ngIf="!exchanged">para canjear</span>
+          </div>
+        </div>        
+
+      </div>
+      
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end">
+    
+        <img src="/assets/image/logo.png" class="image-logo"/>
+      
+      </div>
+
+    </div>
+
+    <div class="content-action">
+
+      <div *ngIf="!exchanged" style="width: 100%;">
+        <h2 class="content-title">Catálogo de premios</h2>
+        <h4 class="content-description">Descubrí los productos que tenes para canjear</h4>
+      </div>
+
+      <div *ngIf="exchanged" style="width: 100%; margin-bottom: 24px;">
+        <h2 class="content-title">Tus premios canjeados</h2>
+      </div>
+      
+      <!-- <div class="award-action">
+      </div> -->
+    
+    </div>
+
+    <div *ngIf="!isEmpty">
+      
+      <mat-grid-list [cols]="gridListCols" [rowHeight]="gridListRowHeight" [gutterSize]="gridListGutterSize" class="grid-list-container">
+        
+        <div class="grid-container">
+        <mat-grid-tile *ngFor="let award of awards;" [colspan]="getGridTileColspan(award)" [rowspan]="getGridTileRowspan(award)" class="grid-tile-container">
+
+          <img [src]="award.src" [alt]="award.name" class="award-grid-image" >
+          
+          <div class="award-grid-detail">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 award-title">{{award.score}} puntos</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 award-name">{{award.name}}</div>
+            
+            <div *ngIf="!exchanged" class="row awards-buttons-container">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: unset;">
+                <button type="button" (click)="showDetail(award)" class="awards-button awards-detail-btn"
+                  >Más información</button> 
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end" style="padding: unset;">
+                <button type="button" (click)="redeemPoints(award)" class="awards-button"
+                  >Canjear</button>
+              </div>
+            </div>
+
+            <div *ngIf="exchanged" class="row awards-buttons-container" >
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: unset;">
+                <button type="button" (click)="showDetail(award)" class="awards-button"
+                  >Más información</button> 
+              </div>
+            </div>
+
+          </div>
+
+        </mat-grid-tile>
+      </div>
+      </mat-grid-list>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="!exchanged" class="footer-container">
+  
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style="align-items: center;">
+
+    <app-view-button viewType="terms"></app-view-button>
+
+  </div>
+  
+</div>

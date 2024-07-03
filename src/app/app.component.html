@@ -1,0 +1,49 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav mode="side" [opened]="false" class="menu-sidenav" >
+    
+    <button id="menu" style="position: absolute; top: 0; left: 0;" 
+            mat-icon-button disableRipple="true" (click)="sidenav.toggle();">
+      <mat-icon style="color: var(--primary)">menu</mat-icon>
+    </button>
+
+    <mat-nav-list fxFlexFill style="position: relative;">
+      
+      <a *ngIf="isAdminUser" href="/#/administrador" mat-list-item [ngClass]="{'active': currentUrl == '/administrador'}" (click)="currentUrl = '/administrador'" >
+        Administración <mat-icon style="vertical-align: middle;">settings</mat-icon>
+      </a>
+      
+      <a href="/#/premios-canjeados" mat-list-item [ngClass]="{'active': currentUrl == '/premios-canjeados'}" (click)="currentUrl = '/premios-canjeados'" >
+        Mis Canjes <mat-icon style="vertical-align: middle;">emoji_events</mat-icon>
+      </a>
+
+      <a href="/#/premios" mat-list-item [ngClass]="{'active':currentUrl == '/premios'}" (click)="currentUrl = '/premios'">
+        Premios <mat-icon style="vertical-align: middle;">workspace_premium</mat-icon>
+      </a>
+
+      <a href="/#/facturas" mat-list-item [ngClass]="{'active':currentUrl == '/facturas'}" (click)="currentUrl = '/facturas'">
+        Mis facturas <mat-icon style="vertical-align: middle;">description</mat-icon>
+      </a>
+
+      <a href="/#/cargar-factura" mat-list-item [ngClass]="{'active':currentUrl == '/cargar-factura'}" (click)="currentUrl = '/cargar-factura'">
+        Cargar factura <mat-icon style="vertical-align: middle;">upload_file</mat-icon>
+      </a>
+      
+    </mat-nav-list>
+
+    <a (click)="logout(sidenav)" mat-list-item class="logout-btn" >
+      Cerrar sesión <mat-icon style="vertical-align: middle;">logout</mat-icon>
+    </a>
+    
+  </mat-sidenav>
+
+  <div>
+    <button id="menu" *ngIf="showMenu && !sidenav.opened" style="position: absolute; top: 0; left: 0;" 
+            mat-icon-button disableRipple="true" (click)="sidenav.toggle();">
+      <mat-icon style="color: var(--primary)">menu</mat-icon>
+    </button>
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

@@ -1,0 +1,22 @@
+{
+	"common.button.close": "CERRAR",
+	"common.button.actions": "ACCIONES",
+	"common.button.detail": "DETALLE",
+	"common.button.more": "VER MÁS",
+	"common.button.new": "NUEVO",
+	"common.button.add": "AGREGAR",
+	"common.button.continue": "CONTINUAR",
+	"common.button.back": "VOLVER",
+	"common.button.ok": "OK",
+	"common.button.send": "ENVIAR",
+	"common.button.cancel": "CANCELAR",
+	"common.button.delete": "ELIMINAR",
+	"common.button.finish": "FINALIZAR",
+	"common.button.edit": "EDITAR",
+	"common.button.confirm": "CONFIRMAR",
+	"common.button.save": "GUARDAR",
+	"common.button.modify": "MODIFICAR",
+	"common.button.download": "DESCARGAR",
+	"common.button.here": "aquí",
+	"common.button.search": "BUSCAR"
+}

@@ -1,0 +1,26 @@
+<div class="row countdown-container">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p class="parrafo-sorteo">PRÓXIMO SORTEO EN </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 timer row" style="position: relative;">
+
+        <div class="countdown-image-container">
+            <img src="/assets/image/countdown.png" width="368" height="96" />
+        </div>
+        
+        <span id="days" class="countdown col-xs-3 col-sm-3 col-md-3 col-lg-3" [ngStyle]="{ 'padding-left': daysToDday < 10 || (daysToDday >= 40 && daysToDday < 50) ? '18px' : (daysToDday >= 10 && daysToDday < 20 ? '30px' : '22px') }">
+            <span *ngIf="10 > daysToDday">0</span>{{daysToDday}}
+        </span>
+        <span id="hours" class="countdown col-xs-3 col-sm-3 col-md-3 col-lg-3" [ngStyle]="{ 'padding-left': hoursToDday < 10 || (hoursToDday >= 40 && hoursToDday < 50) ? '22px' : (hoursToDday >= 10 && hoursToDday < 20 ? '34px' : '26px') }">
+            <span *ngIf="10 > hoursToDday">0</span>{{hoursToDday}}
+        </span> 
+        <span id="minutes" class="countdown col-xs-3 col-sm-3 col-md-3 col-lg-3" [ngStyle]="{ 'padding-left': minutesToDday < 10 || (minutesToDday >= 40 && minutesToDday < 50) ? '24px' : (minutesToDday >= 10 && minutesToDday < 20 ? '36px' : '28px') }">
+            <span *ngIf="10 > minutesToDday">0</span>{{minutesToDday}}
+        </span>
+        <span id="seconds" class="countdown col-xs-3 col-sm-3 col-md-3 col-lg-3" [ngStyle]="{ 'padding-left': secondsToDday < 10 || (secondsToDday >= 40 && secondsToDday < 50) ? '26px' : (secondsToDday >= 10 && secondsToDday < 20 ? '38px' : '30px') }">
+            <span *ngIf="10 > secondsToDday">0</span>{{secondsToDday}}
+        </span>
+    </div>
+</div>

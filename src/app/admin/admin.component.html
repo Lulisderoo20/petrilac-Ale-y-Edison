@@ -1,0 +1,506 @@
+<div class="container-fluid admin-container" >
+
+  <div class="loading" *ngIf="showLoading" >
+    <img class="loading-image" id="loading8" src="/assets/image/loading-08.png" />
+    <img class="loading-image" id="loading7" src="/assets/image/loading-07.png" />
+    <img class="loading-image" id="loading6" src="/assets/image/loading-06.png" />
+    <img class="loading-image" id="loading5" src="/assets/image/loading-05.png" />
+    <img class="loading-image" id="loading4" src="/assets/image/loading-04.png" />
+    <img class="loading-image" id="loading3" src="/assets/image/loading-03.png" />
+    <img class="loading-image" id="loading2" src="/assets/image/loading-02.png" />
+    <img class="loading-image" id="loading1" src="/assets/image/loading-01.png" />
+  </div>
+
+  <nav class="docs-navbar">
+
+    <div class="pull-right">
+      <div class="name-arrow-icon" >
+        <span #username style="text-transform: uppercase;">{{loggedUser}}</span>
+        <mat-icon class="profile-icon" >account_circle</mat-icon>
+      </div>
+    </div>
+
+  </nav>
+
+  <mat-tab-group dynamicHeight mat-align-tabs="search" (selectedTabChange)="onChangeTab($event)" >
+
+    <mat-tab label="FACTURAS">
+      
+      <app-search-filter #searchFilter [filter]="invoiceFilter" (searchEventEmitter)="searchEventByFilter($event)"
+      (clearEventEmitter)="cleanEventByFilter($event)" >
+  
+        <div header class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <mat-form-field>
+              <mat-label>FACTURA</mat-label> 
+              <input matInput id="invoiceLike" (change)="changeInvoiceLike()" name="invoiceLike" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <mat-form-field>
+              <mat-label>ID CLIENTE</mat-label> 
+              <input matInput id="clientId" (change)="changeInvoiceLike()" name="clientId" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <mat-slide-toggle>CANCELADAS</mat-slide-toggle>
+          </div>
+        </div>
+
+      </app-search-filter>
+
+      <div class="admin-content-action">
+        <div style="width: 100%;">
+          <h4>FACTURAS CARGADAS</h4>
+        </div>
+      </div>
+
+      <div *ngIf="invoices?.length > 0" class="admin-table-container">
+
+        <mat-card class="admin-invoice-view-container" *ngFor="let invoice of invoices">
+          
+          <div class="row">
+            
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+              <mat-form-field floatLabel="auto" style="width: 100%;" >
+                <mat-label>ID Cliente</mat-label> 
+                <input matInput type="text" [value]="invoice.clientId" name="clientId" readonly />
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+              <mat-form-field floatLabel="auto" style="width: 100%;" >
+                <mat-label>Usuario</mat-label> 
+                <input matInput type="text" [value]="invoice.username" name="username" readonly />
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+              <mat-form-field floatLabel="auto" style="width: 100%;" >
+                <mat-label>Fecha</mat-label> 
+                <input matInput type="text" [value]="invoice.createDate" name="createDate" readonly />
+              </mat-form-field>
+            </div>
+          
+          </div>
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+              <mat-form-field floatLabel="auto" style="width: 100%;" >
+                <mat-label>Tipo factura</mat-label> 
+                <input matInput type="text" [value]="invoice.type" name="type" readonly />
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+              <mat-form-field floatLabel="auto" style="width: 100%;" >
+                <mat-label>Número factura</mat-label> 
+                <input matInput type="text" [value]="invoice.number" name="number" readonly />
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+              <mat-grid-list cols="1" rowHeight="80px">
+                  <mat-grid-tile
+                    [colspan]="1"
+                    [rowspan]="1"
+                    >{{invoice.points | number: '1.2-2'}}
+                  </mat-grid-tile>
+                  <mat-label class="admin-invoice-points">Puntos</mat-label> 
+              </mat-grid-list>
+            </div>
+          </div>
+
+          <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+            <mat-expansion-panel-header>
+              PRODUCTOS
+            </mat-expansion-panel-header>
+            
+            <div class="row" *ngFor="let product of invoice.products">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                    <mat-form-field floatLabel="auto" style="width: 100%;" >
+                      <mat-label>CATEGORÍA</mat-label> 
+                      <input matInput type="text" [value]="product.categoryName" name="categoryName" readonly />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                    <mat-form-field floatLabel="auto" style="width: 100%;" >
+                      <mat-label>PRODUCTO</mat-label> 
+                      <input matInput type="text" [value]="product.name" name="productName" readonly />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <mat-form-field floatLabel="auto" style="width: 100%;">
+                      <mat-label>CANTIDAD</mat-label> 
+                      <input matInput type="text" [value]="product.count" name="count" readonly />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          
+        </mat-card>
+
+      </div>
+
+      <app-paginator #invoicePaginatorComponent (searchEventEmitter)="searchInvoices()"></app-paginator>
+      
+    </mat-tab>
+
+
+    <mat-tab label="PRODUCTOS">
+
+      <app-search-filter #searchFilter [filter]="productFilter" (searchEventEmitter)="searchEventByFilter($event)"
+      (clearEventEmitter)="cleanEventByFilter($event)">
+  
+        <div header class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <mat-form-field>
+              <mat-label>CATEGORÍA / PRODUCTO</mat-label> 
+              <input matInput id="productLike" (change)="changeProductLike()" name="productLike" />
+            </mat-form-field>
+          </div>
+    
+        </div>
+
+      </app-search-filter>
+
+      <div class="admin-content-action">
+        <div style="width: 100%;">
+          <h4>PRODUCTOS</h4>
+        </div>
+      
+        <div class="admin-action">
+          <button mat-menu-item class="admin-table-button admin-title-button" (click)="createProduct()"><mat-icon class="align-vertical" matTooltip="{{'CREAR PRODUCTO'}}">add</mat-icon></button>
+        </div>
+      </div>
+
+      <div class="admin-table-container">
+
+        <table mat-table [dataSource]="productResults">
+         
+          <ng-container matColumnDef="createDate">
+            <th mat-header-cell *matHeaderCellDef>FECHA CREACIÓN</th>
+            <td mat-cell *matCellDef="let row">{{row.createDate | date:'dd/MM/yyyy HH:mm'}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="productCategoryName">
+            <th mat-header-cell *matHeaderCellDef>CATEGORÍA</th>
+            <td mat-cell *matCellDef="let row">{{row.productCategoryName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="productName">
+            <th mat-header-cell *matHeaderCellDef>PRODUCTO</th>
+            <td mat-cell *matCellDef="let row">{{row.productName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef>PUNTOS</th>
+            <td mat-cell *matCellDef="let row">{{row.points}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>ACCIONES</th>
+            <td mat-cell *matCellDef="let row">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  <button mat-menu-item class="admin-table-button" (click)="editProduct(row)"><mat-icon class="align-vertical" matTooltip="{{'EDITAR PRODUCTO'}}">edit</mat-icon></button>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  <button mat-menu-item class="admin-table-button" (click)="deleteProduct(row)"><mat-icon class="align-vertical" matTooltip="{{'BORRAR PRODUCTO'}}">delete</mat-icon></button>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="productColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: productColumns;"></tr>
+    
+        </table>
+      </div>
+
+      <app-paginator #productPaginatorComponent (searchEventEmitter)="searchProducts()"></app-paginator>
+
+    </mat-tab>
+
+
+    <mat-tab label="PREMIOS">
+
+      <app-search-filter #searchFilter [filter]="adwardFilter" (searchEventEmitter)="searchEventByFilter($event)"
+      (clearEventEmitter)="cleanEventByFilter($event)" >
+  
+        <div header class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <mat-form-field>
+              <mat-label>PREMIO</mat-label> 
+              <input matInput id="adwardLike" (change)="changeAdwardLike()" name="adwardLike" />
+            </mat-form-field>
+          </div>
+    
+        </div>
+
+      </app-search-filter>
+
+      <div class="admin-content-action">
+        <div style="width: 100%;">
+          <h4>PREMIOS</h4>
+        </div>
+      
+        <div class="admin-action">
+          <button mat-menu-item class="admin-table-button admin-title-button" (click)="createAdward()"><mat-icon class="align-vertical" matTooltip="{{'CREAR PREMIOS'}}">add</mat-icon></button>
+        </div>
+      </div>
+
+      <div class="admin-table-container">
+
+        <mat-grid-list [cols]="gridListCols" [rowHeight]="gridListRowHeight" [gutterSize]="gridListGutterSize" class="grid-list-container">
+        
+          <div class="admin-grid-container">
+            <mat-grid-tile *ngFor="let award of awards;" [colspan]="gridListTileColspan" [rowspan]="gridListTileRowspan" class="admin-grid-tile-container">
+    
+              <img [src]="award.src" [alt]="award.name" class="admin-award-grid-image" >
+              
+              <div class="admin-award-grid-detail">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 admin-award-title">{{award.score}} puntos</div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 admin-award-name">{{award.name}}</div>
+                
+                <div class="row admin-awards-buttons-container">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end" style="padding: unset;">
+                    <button type="button" (click)="deleteAdward(award)" class="admin-awards-button admin-awards-delete-button"
+                      >Borrar</button>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: unset;">
+                    <button type="button" (click)="editAdward(award)" class="admin-awards-button"
+                      >Editar</button> 
+                  </div>
+                </div>
+    
+              </div>
+  
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+
+      </div>
+
+      <app-paginator #adwardPaginatorComponent (searchEventEmitter)="searchAdwards()"></app-paginator>
+      
+    </mat-tab>
+
+
+    <mat-tab label="CANJES">
+
+      <app-search-filter #searchFilter [filter]="adwardFilter" (searchEventEmitter)="searchEventByFilter($event)"
+      (clearEventEmitter)="cleanEventByFilter($event)" >
+  
+        <div header class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <mat-form-field>
+              <mat-label>PREMIO</mat-label> 
+              <input matInput id="adwardLike" (change)="changeAdwardLike()" name="adwardLike" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <mat-form-field>
+              <mat-label>ID CLIENTE</mat-label> 
+              <input matInput id="clientId" (change)="changeAdwardLike()" name="clientId" />
+            </mat-form-field>
+          </div>
+    
+        </div>
+
+      </app-search-filter>
+
+      <div class="admin-content-action">
+        <div style="width: 100%;">
+          <h4>PREMIOS CANJEADOS</h4>
+        </div>
+      </div>
+
+      <div class="admin-table-container">
+
+        <mat-grid-list [cols]="exchangedGridListCols" [rowHeight]="exchangedGridListRowHeight" [gutterSize]="exchangedGridListGutterSize" class="grid-list-container">
+        
+          <div class="admin-grid-container">
+            <mat-grid-tile *ngFor="let award of exchangedAwards;" [colspan]="gridListTileColspan" [rowspan]="gridListTileRowspan" class="admin-grid-tile-container">
+    
+              <img [src]="award.src" [alt]="award.name" class="admin-award-grid-image" >
+              
+              <div class="admin-award-grid-detail" style="padding: 8px 32px !important;">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 admin-award-title">{{award.score}} puntos</div>
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 admin-award-name">{{award.name}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 admin-award-user">ID Cliente: {{award.clientId}}</div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 admin-award-user">Fecha: {{award.createDate | date:'dd/MM/yyyy HH:mm'}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 admin-award-user">Usuario: {{award.username}}</div>
+                </div>
+
+                <div class="row admin-awards-buttons-container">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end" style="padding: unset;">
+                    <button type="button" (click)="cancelAdward(award)" class="admin-awards-button admin-awards-delete-button"
+                      >Cancelar</button>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: unset;">
+                    <button type="button" (click)="confirmAdward(award)" class="admin-awards-button"
+                      >Confirmar</button> 
+                  </div>
+                </div>
+    
+              </div>
+  
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+
+      </div>
+
+      <app-paginator #adwardPaginatorComponent (searchEventEmitter)="searchAdwards()"></app-paginator>
+      
+    </mat-tab>
+
+
+    <mat-tab label="USUARIOS">
+
+      <app-search-filter #searchFilter [filter]="sellerFilter" (searchEventEmitter)="searchEventByFilter($event)"
+      (clearEventEmitter)="cleanEventByFilter($event)" [showDates]="false" >
+  
+        <div header class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <mat-form-field>
+              <mat-label>ID CLIENTE</mat-label> 
+              <input matInput id="clientId" (change)="changeBusinessNameLike()" name="clientId" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <mat-form-field>
+              <mat-label>NOMBRE COMERCIO</mat-label> 
+              <input matInput id="businessNameLike" (change)="changeBusinessNameLike()" name="businessNameLike" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <mat-form-field>
+              <mat-label>NOMBRE / APELLIDO / CORREO ELECTRÓNICO / NÚMERO DOCUMENTO</mat-label> 
+              <input matInput id="sellerLike" (change)="changeSellerLike()" name="sellerLike" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <mat-form-field>
+              <mat-label>ORDENAMIENTO</mat-label> 
+              <mat-select id="orderByFilter" (selectionChange)="changeOrderByFilter($event)" name="orderByFilter" floatPlaceholder="never">
+                <mat-option *ngFor="let item of orderByFilters" [value]="item.value">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+    
+        </div>
+
+      </app-search-filter>
+
+      <div class="admin-content-action">
+        <div style="width: 100%;">
+          <h4>USUARIOS</h4>
+        </div>
+      
+        <div class="admin-action">
+          <button mat-menu-item class="admin-table-button admin-title-button" (click)="exportSellers()"><mat-icon class="align-vertical" matTooltip="{{'EXPORTAR'}}">save_alt</mat-icon></button>
+        </div>
+      </div>
+
+      <div class="admin-table-container">
+
+        <table mat-table [dataSource]="sellerResults">
+
+          <ng-container matColumnDef="createDate">
+            <th mat-header-cell *matHeaderCellDef>FECHA CREACIÓN</th>
+            <td mat-cell *matCellDef="let row">{{row.createDate | date:'dd/MM/yyyy HH:mm'}}</td>
+          </ng-container>
+         
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
+            <td mat-cell *matCellDef="let row">{{row.name}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef>APELLIDO</th>
+            <td mat-cell *matCellDef="let row">{{row.lastname}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>CORREO ELECTRÓNICO</th>
+            <td mat-cell *matCellDef="let row">{{row.email}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef>CELULAR</th>
+            <td mat-cell *matCellDef="let row">{{row.phoneNumber}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="documentName">
+            <th mat-header-cell *matHeaderCellDef>TIPO DOCUMENTO</th>
+            <td mat-cell *matCellDef="let row">{{row.documentName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="documentNumber">
+            <th mat-header-cell *matHeaderCellDef>NÚMERO DOCUMENTO</th>
+            <td mat-cell *matCellDef="let row">{{row.documentNumber}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="businessName">
+            <th mat-header-cell *matHeaderCellDef>COMERCIO</th>
+            <td mat-cell *matCellDef="let row">{{row.businessName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="addressName">
+            <th mat-header-cell *matHeaderCellDef>DIRECCIÓN</th>
+            <td mat-cell *matCellDef="let row">{{row.addressName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>ACCIONES</th>
+            <td mat-cell *matCellDef="let row">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <mat-icon *ngIf="row.isVerified" class="admin-user-verified align-vertical" matTooltip="{{'CUENTA VERIFICADA'}}">verified</mat-icon>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <button *ngIf="!row.isVerified" class="admin-table-button" mat-menu-item (click)="verifyAccount(row)"><mat-icon class="align-vertical" matTooltip="{{'VERIFICAR CUENTA'}}">how_to_reg</mat-icon></button>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="sellerColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: sellerColumns;"></tr>
+    
+        </table>
+      </div>
+
+      <app-paginator #sellerPaginatorComponent (searchEventEmitter)="searchSellers()"></app-paginator>
+      
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>

@@ -1,0 +1,270 @@
+.admin-container {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h4 {
+  font-size: 22px !important;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 32px;
+  margin-top: 0;
+  padding-left: 32px;
+  width: 100%;
+}
+
+.docs-navbar {
+  height: 52px;
+  background: var(--tertiary);
+  color: var(--primary);
+  padding-top: 5px;
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+}
+
+.docs-navbar .primary-button {
+  background-color: var(--primary);
+  color: #fff;
+  margin: 0 32px;
+}
+
+.profile-icon {
+  font-size: 38px;
+  height: auto;
+  width: 40px;
+  vertical-align: middle;
+}
+
+.profile-dropdown.mat-button {
+  line-height: unset;
+  min-width: unset;
+  display: inline-block;
+  vertical-align: middle;
+}
+.action-bar .mat-button,
+.profile-dropdown.mat-button {
+  padding: 0;
+}
+.action-bar .mat-button.action-menu {
+  float: right;
+}
+.profile-dropdown.mat-button {
+  font-size: 14px;
+  font-weight: 400 !important;
+}
+
+.notifications-button .mat-icon,
+.profile-dropdown .account-icon {
+  font-size: 28px;
+  height: 28px;
+  width: 28px;
+}
+
+.profile-dropdown img {
+  height: 24px;
+  border-radius: 50%;
+  border: solid 1px var(--quintary);;
+}
+.profile-dropdown .name-arrow-icon {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.profile-dropdown .name-arrow-icon .mat-icon {
+  font-size: 28px;
+  height: 28px;
+  width: 28px;
+  padding-top: 1px;
+  color: var(--quatiary);
+  vertical-align: middle;
+}
+
+@media (max-width: 580px){
+  .profile-dropdown .mat-button-wrapper span{
+      display: none;
+  }
+}
+@media (min-width: 581px){
+  .profile-dropdown.mat-button:not(:hover) {
+      color: var(--quatiary);
+  }
+}
+
+.pull-right {
+  float: right;
+  margin-right: 24px;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.admin-table-container {
+  position: relative;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.admin-content-action {
+  display: flex;
+  margin-right: 16px;
+}
+
+.admin-action {
+  display: flex;
+  text-align: right;
+}
+
+.trend-dialog .mat-dialog-container{
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+.mat-table {
+  overflow-x: scroll;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+
+.align-vertical {
+  width: 64px;
+}
+
+.admin-grid-container {
+  position: relative;
+}
+
+.admin-grid-tile-container {
+  background-color: var(--secondary);
+  border-radius: 6px;
+  box-shadow: 8px 8px 5px #B2B1B0;
+}
+
+.admin-award-grid-image {
+  width: 220px;
+  height: 150px;
+  object-fit: scale-down;
+  margin-top: -80px;
+}
+
+.admin-award-grid-detail {
+  position: absolute;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+  text-align: left;
+  padding: 8px 2px;
+}
+
+.admin-award-title {
+  color: var(--primary);
+  margin-bottom: 2px;
+  font-size: 18px;
+}
+
+.admin-award-user {
+  color: var(--quatiary);
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.admin-award-description {
+  color: #888484;
+}
+
+.admin-award-name {
+  color: var(--quatiary);
+  font-weight: 500 !important;
+  font-size: 12px;
+}
+
+.admin-awards-buttons-container {
+  margin: 16px 8px 0px 8px;
+}
+
+.admin-awards-button {
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  border: solid;
+  border-radius: 24px;
+  width: 100%;
+  text-wrap: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.admin-awards-delete-button {
+  background-color: #d50000 !important;
+}
+
+.admin-awards-button:hover {
+  background-color: var(--secondary);
+}
+
+.admin-invoice-view-container {
+  background-color: var(--quintary);
+  border-radius: 6px;
+  box-shadow: 8px 8px 5px #B2B1B0;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.admin-invoice-points {
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  color: #fff;
+  padding-top: 44px;
+}
+
+.admin-table-button {
+  background-color: var(--primary);
+  color: #fff;
+  border: solid;
+  border-radius: 24px;
+  width: 50%;
+  height: auto;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.admin-title-button {
+  width: 100% !important;
+  height: 32px !important;
+  line-height: 0 !important;
+  padding: 4px !important;
+  margin-right: 16px !important;
+}
+
+.admin-table-button:hover {
+  background-color: var(--secondary);
+}
+
+.admin-user-verified {
+  background-color: #fff;
+  color: green !important;
+  border: solid;
+  border-radius: 24px;
+  width: 50%;
+  height: auto;
+  padding-left: 16px;
+}

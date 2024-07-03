@@ -1,0 +1,29 @@
+.terms-container {
+  margin: 40px;
+}
+
+.fcc-btn {
+  background-color: transparent;
+  color: #ffccb0 !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+span {
+  height: 42px;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.trend-dialog .mat-dialog-container{
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}

@@ -1,0 +1,103 @@
+<div class="content-group-filter">
+
+  <div class="row" >
+
+    <div *ngIf="showDates" [ngClass]="{ 'col-xs-12 col-sm-12 col-md-2 col-lg-2' : !enableSearchAdvancedField || displaySearchAdvanced, 'col-xs-12 col-sm-12 col-md-2 col-lg-2' : enableSearchAdvancedField && !displaySearchAdvanced }">
+      
+      <mat-form-field>
+        <mat-label>FECHA DESDE</mat-label> 
+        <input matInput #fromDate="ngModel" [matDatepicker]="fromPicker" readonly [(ngModel)]="filter.from" (dateChange)="cleanDateInvalid()" name="from">
+        <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fromPicker></mat-datepicker>
+        <div *ngIf="dateFromInvalid || dateFromTodayInvalid" class="color-error">
+          <small *ngIf="dateFromInvalid">FECHA DESDE TIENEN QUE SER MENOR AL HASTA</small>
+          <small *ngIf="dateFromTodayInvalid">FECHA DESDE TIENE QUE SER MENOR A HOY</small>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="showDates" [ngClass]="{ 'col-xs-12 col-sm-12 col-md-2 col-lg-2' : !enableSearchAdvancedField || displaySearchAdvanced, 'col-xs-12 col-sm-12 col-md-2 col-lg-2' : enableSearchAdvancedField && !displaySearchAdvanced }">
+      <mat-form-field>
+        <mat-label>FECHA HASTA</mat-label> 
+        <input matInput #toDate="ngModel" [matDatepicker]="toPicker" [(ngModel)]="filter.to" (dateChange)="cleanDateInvalid()" name="to">
+        <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+        <mat-datepicker #toPicker></mat-datepicker>
+        <div *ngIf="dateToInvalid" class="color-error">
+          <small>FECHA HASTA TIENE QUE SER MAYOR AL DESDE</small>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="enableSearchAdvancedField" [ngClass]="{ 'col-xs-12 col-sm-12 col-md-6 col-lg-6' : showDates, 'col-xs-12 col-sm-12 col-md-10 col-lg-10' : !showDates }">
+
+      <div>
+        <ng-content select="[header]"></ng-content>
+      </div>
+
+    </div>
+
+    <div *ngIf="!displaySearchAdvanced" class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+
+      <div *ngIf="isShowClear" class="search-filter-button">
+        <button  mat-raised-button (click)="clean()">LIMPIAR FILTROS</button>
+      </div>
+
+      <div class="search-filter-button">
+        <button class="search-btn" mat-raised-button (click)="search()" [check-loading]="true"><i class="material-icons" matTooltip="BUSCAR">search</i></button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="!displaySearchAdvanced">
+
+  </div>
+
+  <div class="row" *ngIf="isAdvanced && displaySearchAdvanced">
+
+      <ng-content select="[body]"></ng-content>
+
+  </div>
+
+  <div *ngIf="displaySearchAdvanced" class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 box-footer" style="float: right; margin-top: 0px !important;">
+
+        <mat-checkbox style="padding: 0 8px;" id="generalFilter" [disableRipple]="true" #generalFilter="ngModel" [(ngModel)]="generalFilterEnabled" (change)="onChangeGeneralFilter()" name="generalFilter" color="primary" >
+          MANTENER FILTROS
+        </mat-checkbox>
+
+        <button mat-raised-button (click)="clean()">LIMPIAR FILTROS</button>
+        
+        <button mat-raised-button color="primary" (click)="search()" [check-loading]="true" style="margin-left: 16px; font-size: 12px; font-weight: 800; color: #ffffff;">
+          <i class="material-icons">search</i>BUSCAR
+        </button>
+        
+      </div>
+  </div>
+
+</div>
+
+<div style="margin-bottom: 40px;" [ngClass]="{ 'content-filter-advanced' : isAdvanced }">
+
+  <div *ngIf="isAdvanced">
+
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div *ngIf="!isShowClosed" style="float: right;">
+          <button (click)="displaySearchAdvanced = true; isShowClosed = true;" class="advanced-search-button"><i class="material-icons" style="font-size: 20px; vertical-align: middle;">expand_more</i>BÚSQUEDA AVANZADA</button>
+        </div>
+
+        <div *ngIf="isShowClosed"  style="float: right;">
+          <button (click)="displaySearchAdvanced = false; isShowClosed = false;" class="advanced-search-button"><i class="material-icons" style="font-size: 20px; vertical-align: middle;">expand_less</i>CERRAR</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

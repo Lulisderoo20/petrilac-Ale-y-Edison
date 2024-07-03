@@ -1,0 +1,271 @@
+* {
+  padding:0 !important;
+  margin:0 !important;
+}
+.container-fluid {
+  border: 3px solid red;
+  padding: 2px;
+  background-color: var(--tertiary);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.loading{
+  border: 3px solid green !important;
+  padding: 2px !important;
+}
+
+.loading > div:nth-child(1){
+  border: 1px solid coral !important;
+  padding: 2px !important;
+}
+
+.loading > div:nth-child(2){
+  border: 1px solid violet !important;
+  padding: 2px !important;
+}
+
+
+.welcome-container{
+  border: 2px solid blue !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* div izquierda */
+.welcome-container > div:nth-child(1){
+  border: 2px solid violet !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* unico hijo de dev izquierda */
+.row-container{
+  border: 2px solid red !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+/* unico nieto de dev izquierda */
+.row-container > div:nth-child(1){
+display: flex !important;
+border: 4px solid coral !important;
+padding: 3px !important;
+min-width: 120% !important;
+/* width: 150% !important;
+height: 150% !important; */
+margin: 0 !important;
+}
+
+/* imagen de nieto de dev izquierda */
+.image-register{
+  border: 2px solid blue !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+/* div derecha FORM */
+.welcome-container > div:nth-child(2){
+  border: 2px solid green !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+/* 1er hijo div derecha  */
+.welcome-container > div:nth-child(2) > div:nth-child(1){
+  border: 2px solid red !important;
+  padding: 2px !important;
+  width: 60% !important;
+  height: 99% !important;
+  object-fit: contain !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  overflow: hidden !important;
+}
+
+/* 1er nieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(1) > app-notification-window{
+  border: 2px solid rgb(27, 214, 42) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+
+
+/* 2do hijo div derecha FORM */
+.welcome-container > div:nth-child(2) > div:nth-child(2){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 2do nieto div derecha FORM*/
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* unico bisnieto div derecha FORM*/
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div{
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div{
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* div de div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > div{
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* span de div de div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > div > span{
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 1er boton de div de div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > div > button:nth-child(1){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 2do boton de div de div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > div > button:nth-child(2){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 3er boton de div de div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > div > button:nth-child(3){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 4to boton de div de div de 1er hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > div > button:nth-child(4){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 2do hijo bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(2){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 3er hijo de bisnieto div derecha FORM*/
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* UNICO HIJO DE 3er hijo de bisnieto div derecha FORM*/
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div{
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* UNICO NIETO DE 3er hijo de bisnieto div derecha FORM */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div > div{
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 1er form de UNICO NIETO DE 3er hijo de bisnieto div derecha FORM */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div > div > form:nth-child(1){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 2do form de UNICO NIETO DE 3er hijo de bisnieto div derecha  */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div > div > form:nth-child(2){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 3er form de UNICO NIETO DE 3er hijo de bisnieto div derecha  */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div > div > form:nth-child(3){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 4to hijo de bisnieto div derecha */
+.welcome-container > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(4){
+  border: 2px solid rgb(66, 8, 66) !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.footer-container{
+  border: 2px solid purple !important;
+  padding: 2px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+

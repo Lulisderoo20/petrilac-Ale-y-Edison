@@ -1,0 +1,35 @@
+.notification-container {
+    background: #fff;
+    border: 5px solid var(--primary);
+    border-radius: 10px;
+    color: var(--primary);
+    padding: 16px;
+}
+
+.notification-msj {
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.notification-event {
+    font-size: 14px;
+    pointer-events: auto;
+    cursor: pointer;
+    font-weight: 400 !important;
+    padding-top: 16px;
+}
+
+.notification-index {
+    margin-top: 64px;
+    font-size: 24px;
+    color: var(--primary) !important;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .notification-container {
+        height: 230px;
+        width: 100%;
+    }
+}

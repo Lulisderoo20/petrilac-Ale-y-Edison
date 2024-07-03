@@ -1,0 +1,666 @@
+/* You can add global styles to this file, and also import external style files */
+@import 'indigo-pink.css';
+
+
+:root{
+    --primary: #FB5104;
+    --secondary: #F7BB41;
+    --tertiary: #E9E9E9;
+    --quatiary: #4a4a4a;
+    --quintary: #E0E0E0;
+    --sextiary: #EF7F2D;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--quatiary);
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+h3 {
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  color: var(--quatiary);
+  font-size: 16px;
+}
+
+h4 {
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  color: var(--quatiary);
+  font-size: 14px;
+}
+
+label{
+  font-size: 14px;
+  text-align: left;
+  color: var(--quatiary);
+  font-weight: normal;
+}
+
+.primary-button{
+  color: #ffffff;
+  background-color: var(--primary);
+}
+  
+p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 12px;
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 12px !important;
+}
+
+.mat-dialog-content {
+  margin: 0 -15px !important;
+}
+
+input.mat-input-element {
+  color: black;
+}
+
+  
+  /* LOADING */
+
+.loading {
+  position: fixed;
+  z-index: 2500;
+  height: auto;
+  width: auto;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.loading:before {
+  position: fixed;
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: -1;
+}
+
+.loading:not(:required) {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: var(--tertiary);
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 60px;
+  height: 60px;
+  margin-top: -0.5em;
+  border: solid 5px var(--accent-color);
+  border-radius: 50%;
+  border-color: transparent var(--accent-color) var(--accent-color) var(--accent-color);
+}
+
+.loading-image {
+  width: 28%;
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-animation: LoadingFade 4s infinite;
+  animation: LoadingFade 4s infinite;
+}
+
+@-webkit-keyframes LoadingFade {
+  0% {
+    opacity: 1;
+  }
+  6.25% {
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 0;
+  }
+  93.75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes LoadingFade {
+  0% {
+    opacity: 1;
+  }
+  6.25% {
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 0;
+  }
+  93.75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#loading8 {
+  animation-delay: 3.5s;
+}
+#loading7 {
+  animation-delay: 3s;
+}
+#loading6 {
+  animation-delay: 2.5s;
+}
+#loading5 {
+  animation-delay: 2s;
+}
+#loading4 {
+  animation-delay: 1.5s;
+}
+#loading3 {
+  animation-delay: 1s;
+}
+#loading2 {
+  animation-delay: 0.5s;
+}
+#loading1 {
+  animation-delay: 0s;
+}
+
+.loading-success-message {
+  height: 100%;
+  width: 100%;
+  color: #f24822;
+  font-weight: 800;
+  text-align: center;
+  pointer-events: auto;
+  cursor: pointer;
+  white-space: nowrap;
+  align-items: center;
+}
+
+/* END LOADING */
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: var(--primary) !important;
+}
+
+.mat-radio-outer-circle {
+  background-color: white;
+}
+
+.mat-horizontal-content-container {
+  padding: 0 !important;
+}
+
+
+/* MENU */
+
+.menu-sidenav {
+  position: absolute !important;
+  padding-bottom: 72px;
+  padding-top: 50px;
+  max-width: 280px !important;
+  bottom: 0 !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.menu-sidenav, .menu-sidenav.mat-sidenav-opened {
+  background-color: var(--sidenav-color);
+}
+
+.menu-sidenav ul, .notifications-sidenav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-sidenav li a mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-right: 16px;
+  padding-top: 3px;
+  vertical-align: sub !important;
+}
+
+.menu-sidenav li {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-sidenav li.subitem {
+  background-color: rgba(0,0,0,.15);
+}
+
+menu{
+  margin: 0;
+  padding: 0;
+}
+
+.menu-sidenav li a {
+  box-sizing: border-box !important;
+  display: block !important;
+  align-items: center;
+  font-weight: 300;
+  line-height: 48px;
+  text-decoration: none;
+  transition: all .3s;
+  padding-left: 32px;
+  position: relative !important;
+  color: #fff !important;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0px 0px 0px 0px #fff;
+  -moz-box-shadow: inset 0px 0px 0px 0px #fff;
+  box-shadow: inset 0px 0px 0px 0 #fff;
+  opacity: .7;
+}
+
+.menu-sidenav li a i {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.menu-sidenav li a:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+  opacity: 1;
+}
+
+ .menu-sidenav li a.active {
+  color: #fff;
+  opacity: 1;
+  -webkit-box-shadow: inset 3px 0px 0px 0 #fff;
+  -moz-box-shadow: inset 3px 0px 0px 0 #fff;
+  box-shadow: inset 3px 0px 0px 0 #fff;
+  background-color: rgba(0,0,0,.2)!important;
+  font-weight: 600;
+}
+
+.menu-sidenav li.subitem a {
+  padding-left: 32px;
+}
+
+.menu-sidenav li.subitem a.active {
+  background-color: transparent !important;
+}
+
+.menu-sidenav li a md-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-right: 16px;
+  padding-top: 3px;
+  vertical-align: sub !important;
+}
+
+.menu-sidenav a .expand-arrow {
+  float: right !important;
+}
+
+body, .docs-component-sidenav-content {
+  background-color: #f6f6f6 !important;
+}
+
+.mat-select-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
+}
+
+.app-navbar {
+  color: hsla(0,0%,100%,.87);
+  z-index: 10;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.app-navbar .docs-navbar {
+  max-height: 58px;
+  background: var(--tertiary);
+  color: var(--quatiary);
+  padding: 8px 0;
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+.mat-drawer.mat-drawer-side  {
+  background: var(--tertiary);
+}
+
+.mat-drawer-inner-container {
+  background: var(--quintary);
+  border-radius: 6px;
+  height: 102% !important;
+}
+
+.docs-navbar a > img.logo{
+  margin-top: -8px;
+  max-height: 40px;
+  padding-left: 8px;
+}
+
+.docs-navbar .menu-btn{
+  margin: 0 20px;
+  background-color: transparent;
+}
+@media (max-width: 768px){
+  .docs-navbar .menu-btn{
+    margin: 0 8px;
+  }
+}
+
+@media (max-width: 580px){
+  .docs-navbar .menu-btn{
+    margin: 0 8px;
+  }
+}
+
+.docs-navbar .primary-button{
+  background-color: #673ab7;
+  color: #fff;
+  margin: 0 32px;
+}
+
+.docs-navbar a.padded{
+  padding-left: 32px;
+}
+
+.logout-btn {
+  position: absolute !important;
+  bottom: 0;
+  margin-bottom: 4px;
+  text-align: center;
+  pointer-events: auto;
+  cursor: pointer !important;
+}
+
+.logout-btn:hover {
+  background-color: #fff;
+  box-shadow: 8px 8px 5px #B2B1B0;
+}
+
+button:focus {
+  border: 2px solid var(--primary);
+  outline: none;
+}
+
+.mdc-list {
+  padding: 8px 24px !important;
+}
+
+.mdc-list-item__primary-text {
+  color: var(--quatiary) !important;
+}
+
+.mdc-list-item.active .mdc-list-item__primary-text {
+  color: var(--primary) !important;
+}
+
+/* END MENU */
+
+/* CARROUSEL */
+
+ngb-carousel .wrapper {
+  position: relative;
+  height: 0;
+  padding-top: 55%; /* Keep ratio for 900x500 images */
+}
+
+ngb-carousel .wrapper>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* END CARROUSEL */
+
+.footer-container {
+  margin-top: 4px;
+  background-color: var(--primary);
+}
+
+.image-logo {
+  width: 380px;
+  height: 208px;
+  object-fit: scale-down;
+  margin-top: -56px;
+}
+
+.account-user-container {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.account-action {
+  display: flex;
+  text-align: right;
+}
+
+.account {
+  height: 100px !important;
+  width: 100px !important;
+  font-size: 72px;
+  color: #BCBCBC;
+}
+
+.account-container {
+  height: 88px !important;
+  margin-right: -6% !important;
+  margin-top: 8px;
+}
+
+.user-container {
+  margin-left: -24px;
+}
+
+.username-container {
+  margin-top: 8px;
+  font-size: 18px;
+  color: var(--quatary);
+  font-weight: 500 !important;
+}
+
+.score-container {
+  margin-top: 8px;
+  color: var(--quatary);
+  font-weight: 500 !important;
+}
+
+.content-action {
+  display: flex;
+  margin-right: 16px;
+}
+
+.content-title {
+  color: var(--primary);;
+  margin-bottom: 2px !important;
+}
+
+.content-description {
+  color: #888484;
+}
+
+.mat-mdc-text-field-wrapper {
+  background-color: var(--sextiary) !important;
+  border-radius: 32px !important;
+}
+
+.mdc-floating-label {
+  text-transform: uppercase !important;
+  color: #fff !important;
+}
+
+input {
+  color: #fff !important;
+}
+
+.mat-mdc-select-placeholder {
+  color: #fff !important;
+}
+
+mat-select {
+  color: #fff !important;
+}
+
+mat-option {
+  color: #fff !important;
+}
+
+mat-error {
+  margin-top: -12px !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+button {
+  color: #fff !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--sextiary);
+  -webkit-text-fill-color: #F1F1F1;
+  -webkit-box-shadow: 0 0 0px 1000px var(--sextiary) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+mat-grid-tile {
+  font-size: 24px;
+  background: var(--secondary);
+  border-radius: 24px;
+  color: #fff;
+  margin-top: -12px;
+}
+
+.container-fluid {
+  min-height: 88vh;
+}
+
+mat-tab-group {
+  background-color: var(--quintary);
+}
+
+.mat-mdc-tab-group, .mat-mdc-tab-nav-bar{
+  --mat-tab-header-active-focus-label-text-color: var(--primary);
+  --mat-tab-header-active-label-text-color: var(--primary);
+  --mat-tab-header-active-hover-label-text-color: var(--primary);
+  --mat-tab-header-active-ripple-color: var(--primary);
+  --mat-tab-header-inactive-label-text-color: var(--quatiary);
+  --mat-tab-header-inactive-ripple-color: var(--quatiary);
+  --mat-tab-header-inactive-focus-label-text-color: var(--primary);
+  --mat-tab-header-inactive-hover-label-text-color: var(--primary);
+}
+
+mat-form-field {
+  width: 100% !important;
+}
+
+.mat-mdc-slide-toggle.mat-accent {
+  background-color: var(--secondary);
+  padding: 12px;
+  vertical-align: text-top;
+  border-radius: 24px;
+}
+
+html .mat-mdc-slide-toggle.mat-accent {
+  --mdc-switch-selected-focus-state-layer-color: var(--primary);
+  --mdc-switch-selected-handle-color: var(--primary);
+  --mdc-switch-selected-hover-state-layer-color: var(--primary);
+  --mdc-switch-selected-pressed-state-layer-color: var(--primary);
+  --mdc-switch-selected-focus-handle-color: var(--primary);
+  --mdc-switch-selected-hover-handle-color: var(--primary);
+  --mdc-switch-selected-pressed-handle-color: var(--primary);
+  --mdc-switch-selected-focus-track-color: var(--primary);
+  --mdc-switch-selected-hover-track-color: var(--primary);
+  --mdc-switch-selected-pressed-track-color: var(--primary);
+  --mdc-switch-selected-track-color: var(--primary);
+}
+
+.mat-mdc-raised-button.mat-primary {
+  width: fit-content !important;
+  background-color: var(--primary) !important;
+  color: #fff !important;
+  font-weight: 100 !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  background-color: var(--secondary) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:disabled {
+  background-color: var(--tertiary) !important;
+}

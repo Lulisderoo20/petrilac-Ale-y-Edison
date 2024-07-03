@@ -1,0 +1,185 @@
+<div class="container-fluid">
+
+
+  <!-- primer div -->
+  <div class="row row-container">
+
+    <!--arriba izquierda -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center" >
+
+      <!-- único hijo de carrousel izquierda -->
+       <div class="row award-container d-flex justify-content-center">
+
+
+
+          <!-- unico nieto de carrousel izquierda -->
+          <c-carousel [interval]="3000" [animate]="false" transition="slide" [dark]="false" [wrap]="true">
+
+            <!-- 1er hijo del nieto de carrousel izquierda -->
+            <!-- <c-carousel-indicators>
+
+              
+            </c-carousel-indicators> -->
+
+            <!-- 2do hijo del nieto de carrousel izquierda -->
+            <c-carousel-inner>
+
+              <c-carousel-item *ngFor="let awardImage of awardImages">
+
+                <img [src]="awardImage.src" alt="Premio" class="image-award" >
+
+              </c-carousel-item>
+
+            </c-carousel-inner>
+
+            <!-- 3er hijo del nieto de carrousel izquierda -->
+            <!-- <c-carousel-control [routerLink] caption="Previous" direction="prev">
+
+            </c-carousel-control> -->
+
+            <!-- 4to hijo del nieto de carrousel izquierda -->
+            <!-- <c-carousel-control [routerLink] caption="Next" direction="next">
+
+            </c-carousel-control> -->
+
+          </c-carousel>
+          <!-- termina nieto de izquierda -->
+
+
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+    <!--arriba derecha -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center" >
+
+      <!--único hijo de arriba derecha -->
+      <div class="row row-container">
+
+        <!-- 1er nieto de arriba derecha LOGO -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
+
+          <img src="/assets/image/loading-08.png" class="image-logo"/>
+
+        </div>
+
+        <!-- 2do nieto arriba derecha BOTONES-->
+        <div *ngIf="!signup" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center btn-group-container" style="align-items: center;">
+
+          <!--div registrarse / inicio sesión - único hijo de 2do nieto arriba derecha -->
+          <div class="btn-group">
+
+            <!-- único nieto de 2do nieto arriba derecha -->
+            <div class="row">
+
+              <!-- 1er hijo de único nieto de 2do nieto arriba derecha -->
+              <div class="col">
+
+                    <button
+                    mat-raised-button
+                    (click)="clickRegister()"
+                    class="color-button"
+                    >REGISTRARSE</button>
+
+              </div>
+
+              <!-- 2do hijo de único nieto de 2do nieto arriba derecha -->
+              <div class="col">
+
+                    <button
+                    mat-raised-button
+                    (click)="clickSignup()"
+                    class="color-button"
+                    >INICIAR SESIÓN</button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+          
+  </div>
+
+
+
+
+  <!-- segundo div -->
+  <div class="row row-container">
+    
+    <!-- izquierda del 2do div -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center align-items-start" >
+
+      <img src="/assets/image/home.png" class="image-home"/>
+
+    </div>
+
+    <!-- derecha del 2do div -->
+    <div *ngIf="!signup" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center bep-container" >
+
+      <img src="/assets/image/bep.png" class="image-bep"/>
+
+    </div>
+
+    <!-- este no se ve -->
+    <div *ngIf="signup" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center">
+
+      <app-form-user [signup]="true" (registerEventEmitter)="clickRegister()" ></app-form-user>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <!-- ngIfs -->
+   
+  <!-- 1er ngIf -->
+  <div *ngIf="registration" class="row row-container">
+
+    <!-- 1er hijo de 1er ngIf -->
+    <div class="d-flex justify-content-center close-registration-btn" (click)="clickRegister()">
+      <i class="chevron"></i>
+    </div>
+
+    <!-- 2do hijo de 1er ngIf -->
+    <app-form-user id="registrationComponent" [register]="true"  (signUpEventEmitter)="clickSignup()" >
+
+    </app-form-user>
+
+  </div>
+
+  <!-- 2do ngIf FOOTER DEL FORM-->
+  <div *ngIf="registration" class="row footer-container">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style="align-items: center;">
+
+      <app-view-button viewType="terms">
+        
+      </app-view-button>
+      
+
+    </div>
+
+  </div>
+
+
+
+</div>

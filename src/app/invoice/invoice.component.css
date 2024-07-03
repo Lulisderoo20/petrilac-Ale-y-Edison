@@ -1,0 +1,69 @@
+.invoice-view-container {
+    background-color: var(--quintary);
+    border-radius: 6px;
+    box-shadow: 8px 8px 5px #B2B1B0;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.invoice-container {
+    background-color: var(--quintary);
+    border-radius: 6px;
+    box-shadow: 8px 8px 5px #B2B1B0;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.invoice-points {
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    color: #fff;
+    padding-top: 44px;
+}
+
+.upload-invoice-btn-container {
+    width: 100%;
+}
+
+.upload-invoice-btn {
+    width: fit-content;
+    background-color: var(--primary) !important;
+    color: #fff !important;
+    font-weight: 100 !important;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.upload-invoice-btn:hover {
+    background-color: var(--secondary) !important;
+}
+
+.upload-invoice-count {
+    font-size: 12px;
+}
+
+.mat-mdc-raised-button[disabled], .mat-mdc-raised-button.mat-mdc-button-disabled {
+    cursor: default !important;
+    pointer-events: none !important;
+    color: var(--mdc-protected-button-disabled-label-text-color) !important;
+    background-color: var(--mdc-protected-button-disabled-container-color) !important;
+}
+
+.add-product-btn {
+    width: fit-content;
+    background-color: var(--tertiary) !important;
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    font-size: 11px;
+    pointer-events: auto;
+    cursor: pointer;
+    height: 28px;
+}
+
+.add-product-icon {
+    padding-left: 4px;
+    font-size: 16px !important;
+}

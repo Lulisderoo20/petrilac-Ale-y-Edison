@@ -1,0 +1,34 @@
+.countdown-container {
+    width: 378px;
+}
+
+@media (max-width: 1000px) {
+    .countdown-container {
+        display: none;
+    }
+    .countdown-image-container {
+        display: none;
+    }
+}
+
+.countdown {
+    width:100%;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 6px;
+}
+
+.parrafo-sorteo {
+    width:100%;
+    color: #005573;
+    font-weight: 800;
+    font-size: 30px;
+    margin-bottom: 34px !important;
+}
+
+.countdown-image-container {
+    position: absolute;
+    top: -124%;
+    left: 5.5%;
+}

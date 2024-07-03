@@ -1,0 +1,113 @@
+<div class="loading" *ngIf="showLoading" >
+    <img class="loading-image" id="loading8" src="/assets/image/loading-08.png" />
+    <img class="loading-image" id="loading7" src="/assets/image/loading-07.png" />
+    <img class="loading-image" id="loading6" src="/assets/image/loading-06.png" />
+    <img class="loading-image" id="loading5" src="/assets/image/loading-05.png" />
+    <img class="loading-image" id="loading4" src="/assets/image/loading-04.png" />
+    <img class="loading-image" id="loading3" src="/assets/image/loading-03.png" />
+    <img class="loading-image" id="loading2" src="/assets/image/loading-02.png" />
+    <img class="loading-image" id="loading1" src="/assets/image/loading-01.png" />
+</div>
+
+<div class="container" *ngIf="!showLoading" >
+
+    <h1 mat-dialog-title class="container-h1">VERIFICACIÓN DE CUENTA</h1>
+
+
+    <div mat-dialog-content>
+
+        <p>Está seguro de verificar la cuenta de {{accountSeller.name}} {{accountSeller.lastname}} ({{accountSeller.email}})?</p>
+
+        <button style="margin-top: 10%;"
+                class="submit-btn"
+                color="primary"
+                mat-raised-button
+                [disabled]="showLoading"
+                (click)="verifyAccount()"
+        >       
+            VERIFICAR CUENTA
+        </button>
+    <div >
+        <button mat-button class="container-button" (click)="closeDialog()"> X </button>
+    </div>
+</div>
+
+
+<style>
+    .container{
+        position: relative;
+        border: 5px solid var(--primary);
+        border-radius: 10px;
+        color: var(--primary);
+        overflow: hidden;
+    }
+    .container::-webkit-scrollbar{
+        width: 5px;
+        
+    }
+    .container::-webkit-scrollbar-thumb{
+        background: grey;
+        border-radius: 10px;
+        height: 10px;
+    }
+    .container::-webkit-scrollbar-track{
+        width: 2px;
+    }
+    .container-h1{
+        text-align: center;
+        font-size: 24px;
+
+    }
+    .container-button{
+        position: absolute;
+        border: none;
+        color: #ffffff;
+        background-color: var(--primary);
+        right: 0px;
+        top:0px;
+    }
+
+    ::ng-deep .mat-horizontal-stepper-header:not([ng-reflect-active="true"]) {
+        pointer-events: none !important;
+    }
+
+    ::ng-deep .mat-input-element {
+        border-color: var(--primary);
+    }
+
+    ::ng-deep .mat-form-field-outline-start {
+        border-color: var(--primary);
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-color: var(--primary);
+    }
+    ::ng-deep .mat.label {
+        display: none;
+    }
+    .section-title {
+        margin-bottom: 20px;
+    }
+
+    .addButton {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .user-details-container {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .full-width {
+     width: 100%;
+    }
+
+    .error-message {
+        font-size: 12px;
+    }
+
+    .submit-btn {
+        margin-bottom: 16px;
+        width: 100%;
+    }
+
+</style>
